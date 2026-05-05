@@ -1,0 +1,12 @@
+1. SELECT * FROM inhabitant 
+2. SELECT * FROM inhabitant WHERE state = 'friendly'
+3. SELECT * FROM inhabitant WHERE state = 'friendly' AND job = 'weaponsmith'
+4. SELECT * FROM inhabitant WHERE state = 'friendly' AND job like '%smith'
+5. SELECT personid FROM inhabitant WHERE name = 'Stranger'
+6. SELECT gold FROM inhabitant WHERE name = 'Stranger'
+7. SELECT * FROM item WHERE owner IS NULL
+8. UPDATE item SET owner = 20 WHERE owner IS NULL
+9. SELECT * FROM item WHERE owner = 20
+10. SELECT * FROM inhabitant WHERE state = 'friendly' AND job = 'dealer'
+11. UPDATE item SET owner = 15 WHERE item = 'ring' or item = 'teapot'
+12. SELECT * FROM inhabitant WHERE job LIKE '%baker'

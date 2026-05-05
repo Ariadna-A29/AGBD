@@ -1,0 +1,58 @@
+SELECT * FROM crime_scene_report 
+WHERE date = 20180115 AND type = 'murder' AND city like 'sql city' 
+
+Selecciona de la tabla crime_suene_report los datos acerca del crimen: el dato de la fecha del crimen, el tipo de persona identificada: ‘asesino’ y la ciudad donde sucedió el crimen. 
+
+SELECT * FROM person  
+WHERE address_street_name like 'Northwestern Dr' 
+ORDER BY address_number DESC LIMIT 4 
+
+Selecciona de la tabla person, dónde address _street_name (“Calle donde vive”) sea igual a Northwestern Dr, y da solo 4 opciones por el límite que pusimos. 
+
+SELECT * FROM person  
+WHERE name like 'Annabel%' AND address_street_name like 'Franklin Ave' 
+
+Selecciona de person donde nombre sea parecido a ‘Annabel’ y que la calle donde vive sea parecido a Franklin Ave. 
+
+SELECT * FROM interview 
+WHERE person_id like ‘14887’ 
+
+Selecciona de la tabla interview (entrevista) donde el person_id sea parecido al 14887, es decir, del primer testigo, para ver la declaración que había hecho. 
+
+SELECT * FROM interview 
+WHERE person_id like ‘16371’ 
+
+Selecciona de la tabla interview donde ahora, person_id sea similar a ‘16371’, esta vez de la segunda testigo. 
+
+SELECT * FROM drivers_license 
+WHERE plate_number like 'H42W%' 
+
+Selecciona de la tabla drivers_license, donde plate_number(número de matrícula) sea similar a “H42W” 
+
+SELECT * FROM get_fit_now_member 
+WHERE id like '%48Z%' 
+
+Selecciona de get_fit_now_member, donde el id sea parecido a ‘48Z’. Esto era para obtener el número de membresía de los personajes con este número. 
+
+En vez de buscar id en la tabla de miembros de membresía, busque en la otra tabla con: 
+
+SELECT * FROM get_fit_now_check_in 
+WHERE membership_id like '%48Z%'  
+
+Seleccioné de la tabla get_fit_now_check_in, donde membership_id sea similar a ‘48Z’, porque esta tabla tenía información del número de membresía, que el testigo Nº1 había declarado. 
+
+SELECT * FROM get_fit_now_check_in 
+
+JOIN get_fit_now_member 
+ON membership_status = 'gold' 
+WHERE membership_id like '48Z%'  
+
+Selecciona de la tabla mencionada anteriormente, uniendo también la tabla de get_fit_now_member para obtener más datos del sospechoso, usando el membership_status que sea igual a oro (‘gold') y donde membership_id sea parecido a el número de membresía del asesino. 
+
+(Con ayuda del profesor, realizamos la búsqueda con 3 JOINS para vincular tablas con mismas variables, buscar el número de membresía y el número de matrícula) 
+
+SELECT * FROM get_fit_now_check_in gc 
+JOIN get_fit_now_member gm ON gc.membership_id = gm.id  
+JOIN person p ON gm.person_id = p.id  
+JOIN drivers_license dl ON p.license_id = dl.id 
+WHERE membership_id like '48Z%' AND plate_number like '%H42W%' 
